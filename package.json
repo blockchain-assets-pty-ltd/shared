@@ -1,0 +1,35 @@
+{
+  "name": "@blockchain-assets-pty-ltd/shared",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blockchain-assets-pty-ltd/shared.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blockchain-assets-pty-ltd/shared/issues"
+  },
+  "homepage": "https://github.com/blockchain-assets-pty-ltd/shared#readme",
+  "dependencies": {
+    "@types/big.js": "^6.1.6",
+    "big.js": "^6.2.1",
+    "luxon": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.3.1",
+    "@types/jest": "^29.0.3",
+    "ts-jest": "^29.0.1"
+  }
+}
