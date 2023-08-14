@@ -20,10 +20,13 @@ export const fromDateString = (val: string): DateTime => DateTime.fromFormat(val
 export const fromDateTimeString = (val: string): DateTime => DateTime.fromFormat(val, "yyyy-MM-dd HH:mm:ss", { zone: TIMEZONE })
 export const fromDateTimeMillisString = (val: string): DateTime => DateTime.fromFormat(val, "yyyy-MM-dd HH:mm:ss.SSS", { zone: TIMEZONE })
 
-const QUARTER_ORDERING = [3, 4, 1, 2]
-const QUARTER_START_MONTHS = [1, 4, 7, 10]
-const QUARTER_END_MONTHS = [3, 6, 9, 12]
-const QUARTER_END_DAYS = [31, 30, 30, 31]
+export const QUARTER_ORDERING = [3, 4, 1, 2]
+export const QUARTERS = [
+    { start: { day: 1, month: 1 }, end: { day: 31, month: 3 } },
+    { start: { day: 1, month: 4 }, end: { day: 30, month: 6 } },
+    { start: { day: 1, month: 7 }, end: { day: 30, month: 9 } },
+    { start: { day: 1, month: 10 }, end: { day: 31, month: 12 } }
+]
 
 export type FinancialYear = {
     startDate: DateTime
@@ -32,15 +35,16 @@ export type FinancialYear = {
 
 export function getFinancialYear(date: DateTime): FinancialYear {
     const Q1Index = QUARTER_ORDERING.indexOf(1)
-    const startFYMonth = QUARTER_START_MONTHS[Q1Index]
+    const startFYMonth = QUARTERS[Q1Index].start.month
+    const startFYDay = QUARTERS[Q1Index].start.day
     const Q4Index = QUARTER_ORDERING.indexOf(4)
-    const endFYMonth = QUARTER_END_MONTHS[Q4Index]
-    const endFYDay = QUARTER_END_DAYS[Q4Index]
+    const endFYMonth = QUARTERS[Q4Index].end.month
+    const endFYDay = QUARTERS[Q4Index].end.day
     const fyStartYear = date.month > endFYMonth ? date.year : date.plus({ years: -1 }).year
     const fyEndYear = date.month > endFYMonth ? date.plus({ years: 1 }).year : date.year
     return {
-        startDate: DateTime.fromObject({ year: fyStartYear, month: startFYMonth, day: 1 }, { zone: TIMEZONE }),
-        endDate: DateTime.fromObject({ year: fyEndYear, month: endFYMonth, day: endFYDay }, { zone: TIMEZONE }),
+        startDate: DateTime.fromObject({ year: fyStartYear, month: startFYMonth, day: startFYDay }, { zone: TIMEZONE }),
+        endDate: DateTime.fromObject({ year: fyEndYear, month: endFYMonth, day: endFYDay }, { zone: TIMEZONE })
     }
 }
 
@@ -54,7 +58,7 @@ export function getFiscalQuarter(date: DateTime): FiscalQuarter {
     const i = Math.floor((date.month + 2) / 3) - 1
     return {
         index: QUARTER_ORDERING[i],
-        startDate: DateTime.fromObject({ year: date.year, month: QUARTER_START_MONTHS[i], day: 1 }, { zone: TIMEZONE }),
-        endDate: DateTime.fromObject({ year: date.year, month: QUARTER_END_MONTHS[i], day: QUARTER_END_DAYS[i] }, { zone: TIMEZONE })
+        startDate: DateTime.fromObject({ year: date.year, month: QUARTERS[i].start.month, day: QUARTERS[i].start.day }, { zone: TIMEZONE }),
+        endDate: DateTime.fromObject({ year: date.year, month: QUARTERS[i].end.month, day: QUARTERS[i].end.day }, { zone: TIMEZONE })
     }
 }
