@@ -1,5 +1,6 @@
 import { DateTime } from "luxon"
-import { TIMEZONE, normaliseDate, getElapsedPercentage, getFinancialYear, getFiscalQuarter, FinancialYear, FiscalQuarter } from "../src/dates"
+import type { FinancialYear, FinancialQuarter } from "../src/types"
+import { TIMEZONE, normaliseDate, getElapsedPercentage, getFinancialYear, getFinancialQuarter } from "../src/dates"
 
 describe("normalise date", () => {
     const now = DateTime.fromObject({ year: 2000, month: 1, day: 1 }, { zone: TIMEZONE })
@@ -51,7 +52,7 @@ describe("get elapsed percentage", () => {
     })
 })
 
-describe("fiscal", () => {
+describe("financial periods", () => {
     test("get financial year", () => {
         const financialYear: FinancialYear = {
             startDate: DateTime.fromObject({ year: 2000, month: 7, day: 1 }, { zone: TIMEZONE }),
@@ -64,35 +65,35 @@ describe("fiscal", () => {
         expect(getFinancialYear(financialYear.endDate.plus({ days: 1 }))).not.toMatchObject(financialYear)
     })
 
-    test("get fiscal quarter", () => {
-        const Q1: FiscalQuarter = {
+    test("get financial quarter", () => {
+        const Q1: FinancialQuarter = {
             index: 1,
             startDate: DateTime.fromObject({ year: 2000, month: 7, day: 1 }, { zone: TIMEZONE }),
             endDate: DateTime.fromObject({ year: 2000, month: 9, day: 30 }, { zone: TIMEZONE })
         }
-        const Q2: FiscalQuarter = {
+        const Q2: FinancialQuarter = {
             index: 2,
             startDate: DateTime.fromObject({ year: 2000, month: 10, day: 1 }, { zone: TIMEZONE }),
             endDate: DateTime.fromObject({ year: 2000, month: 12, day: 31 }, { zone: TIMEZONE })
         }
-        const Q3: FiscalQuarter = {
+        const Q3: FinancialQuarter = {
             index: 3,
             startDate: DateTime.fromObject({ year: 2000, month: 1, day: 1 }, { zone: TIMEZONE }),
             endDate: DateTime.fromObject({ year: 2000, month: 3, day: 31 }, { zone: TIMEZONE })
         }
-        const Q4: FiscalQuarter = {
+        const Q4: FinancialQuarter = {
             index: 4,
             startDate: DateTime.fromObject({ year: 2000, month: 4, day: 1 }, { zone: TIMEZONE }),
             endDate: DateTime.fromObject({ year: 2000, month: 6, day: 30 }, { zone: TIMEZONE })
         }
 
-        expect(getFiscalQuarter(Q1.startDate.minus({ days: 1 }))).not.toMatchObject(Q1)
-        expect(getFiscalQuarter(Q1.startDate)).toMatchObject(Q1)
-        expect(getFiscalQuarter(Q2.startDate.minus({ days: 1 }))).not.toMatchObject(Q2)
-        expect(getFiscalQuarter(Q2.startDate)).toMatchObject(Q2)
-        expect(getFiscalQuarter(Q3.startDate.minus({ days: 1 }))).not.toMatchObject(Q3)
-        expect(getFiscalQuarter(Q3.startDate)).toMatchObject(Q3)
-        expect(getFiscalQuarter(Q4.startDate.minus({ days: 1 }))).not.toMatchObject(Q4)
-        expect(getFiscalQuarter(Q4.startDate)).toMatchObject(Q4)
+        expect(getFinancialQuarter(Q1.startDate.minus({ days: 1 }))).not.toMatchObject(Q1)
+        expect(getFinancialQuarter(Q1.startDate)).toMatchObject(Q1)
+        expect(getFinancialQuarter(Q2.startDate.minus({ days: 1 }))).not.toMatchObject(Q2)
+        expect(getFinancialQuarter(Q2.startDate)).toMatchObject(Q2)
+        expect(getFinancialQuarter(Q3.startDate.minus({ days: 1 }))).not.toMatchObject(Q3)
+        expect(getFinancialQuarter(Q3.startDate)).toMatchObject(Q3)
+        expect(getFinancialQuarter(Q4.startDate.minus({ days: 1 }))).not.toMatchObject(Q4)
+        expect(getFinancialQuarter(Q4.startDate)).toMatchObject(Q4)
     })
 })

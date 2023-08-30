@@ -1,4 +1,5 @@
 import { DateTime, Settings } from "luxon"
+import type { FinancialYear, FinancialQuarter } from "./types"
 
 Settings.throwOnInvalid = true
 
@@ -28,11 +29,6 @@ export const QUARTERS = [
     { start: { day: 1, month: 10 }, end: { day: 31, month: 12 } }
 ]
 
-export type FinancialYear = {
-    startDate: DateTime
-    endDate: DateTime
-}
-
 export function getFinancialYear(date: DateTime): FinancialYear {
     const Q1Index = QUARTER_ORDERING.indexOf(1)
     const startFYMonth = QUARTERS[Q1Index].start.month
@@ -48,13 +44,7 @@ export function getFinancialYear(date: DateTime): FinancialYear {
     }
 }
 
-export type FiscalQuarter = {
-    index: number
-    startDate: DateTime
-    endDate: DateTime
-}
-
-export function getFiscalQuarter(date: DateTime): FiscalQuarter {
+export function getFinancialQuarter(date: DateTime): FinancialQuarter {
     const i = Math.floor((date.month + 2) / 3) - 1
     return {
         index: QUARTER_ORDERING[i],
