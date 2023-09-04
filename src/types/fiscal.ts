@@ -12,20 +12,21 @@ export type FinancialQuarter = {
     endDate: DateTime
 }
 
-export type TaxDistribution = {
-    discountCapitalGains: Big,
-    nonDiscountCapitalGains: Big,
-    income: Big
+export type Distribution = {
+	discountCapitalGains: Big,
+	nonDiscountCapitalGains: Big,
+	income: Big,
+	cash: Big
 }
 
-export type TaxCalculation = {
-    financialYear: FinancialYear,
-    totalTaxDistribution: TaxDistribution,
-    totalCashDistribution: Big,
-    attributions: {
-        [memberId: string]: {
-            taxDistribution: TaxDistribution,
-            cashDistribution: Big
-        }
-    }
+export type AttributedDistribution = {
+    date: DateTime,
+    accountId: number,
+    distribution: Distribution
+}
+
+export type AttributionCalculation = {
+    date: DateTime,
+    totalDistribution: Distribution,
+    attributions: AttributedDistribution[]
 }
