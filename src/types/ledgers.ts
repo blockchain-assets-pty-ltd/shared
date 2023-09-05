@@ -1,5 +1,6 @@
 import type { Big } from "big.js"
 import type { DateTime } from "luxon"
+import type { Distribution } from "./fiscal"
 
 export type UnitHoldersRegisterEntry = {
     date: DateTime
@@ -18,6 +19,12 @@ export type FeeCapitalisationsEntry = {
     managementFee: Big
     highWaterMark: Big
     performanceFee: Big
+}
+
+export type AttributedDistributionsEntry = {
+    date: DateTime
+    accountId: number
+    distribution: Distribution
 }
 
 export type FundMetricsEntry = {

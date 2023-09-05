@@ -1,5 +1,6 @@
 import type { Big } from "big.js"
 import type { DateTime } from "luxon"
+import { AttributedDistributionsEntry } from "./ledgers"
 
 export type FinancialYear = {
     startDate: DateTime
@@ -19,14 +20,8 @@ export type Distribution = {
 	cash: Big
 }
 
-export type AttributedDistribution = {
-    date: DateTime
-    accountId: number
-    distribution: Distribution
-}
-
 export type AttributionCalculation = {
     date: DateTime
     totalDistribution: Distribution
-    attributions: AttributedDistribution[]
+    attributions: AttributedDistributionsEntry[]
 }
