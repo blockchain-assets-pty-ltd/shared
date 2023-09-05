@@ -52,12 +52,12 @@ export type VintageData = {
 }
 
 export type FeeCalculation = {
-    valuationDate: DateTime,
-    aum: Big,
+    valuationDate: DateTime
+    aum: Big
     rates: {
-        managementFee: Big,
-        benchmarkReturn: Big,
-        performanceFee: Big,
+        managementFee: Big
+        benchmarkReturn: Big
+        performanceFee: Big
         gst: Big
     }
     vintages: VintageData[]

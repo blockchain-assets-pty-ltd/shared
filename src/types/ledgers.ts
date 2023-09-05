@@ -5,6 +5,7 @@ export type UnitHoldersRegisterEntry = {
     date: DateTime
     vintage: number
     accountId: number
+    type: "Acquisition" | "Redemption" | "Distribution Reinvestment"
     unitsAcquiredOrRedeemed: Big
     unitPrice: Big
     fundsInOrOut: Big
