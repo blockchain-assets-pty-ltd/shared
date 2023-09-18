@@ -10,6 +10,7 @@ export type Account = {
     state: string
     postcode: string
     country: string
+    distributionReinvestmentPercentage: Big
     oldId?: string | null
     unitsHeld?: Big | null
     totalInvested?: Big | null
