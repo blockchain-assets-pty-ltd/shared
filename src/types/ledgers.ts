@@ -24,8 +24,7 @@ export type FeeCapitalisationsEntry = {
 export type AttributedDistributionsEntry = {
     date: DateTime
     accountId: number
-    distribution: Distribution
-}
+} & Distribution
 
 export type FundMetricsEntry = {
     date: DateTime
