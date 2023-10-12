@@ -1,4 +1,4 @@
 export * from "./types"
 export * from "./dates"
-export * from "./formatting"
+export * from "./currency"
 export * from "./math"

@@ -1,5 +1,5 @@
 import { Big } from "big.js"
-import { toUnitsString, toUnitPriceString, toBaseCurrencyString } from "../src/formatting"
+import { toUnitsString, toUnitPriceString, toBaseCurrencyString } from "../src/currency"
 
 const val1 = new Big("1.55555")
 const val2 = new Big("100.56565")
