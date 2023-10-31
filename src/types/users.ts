@@ -12,7 +12,7 @@ export type Administrator = {
 export type Client = {
     id: number
     firstName: string
-    lastName: string | null
+    lastName: string
     email: string
     ethereumAddress?: string | null
     lastAccessedAt?: DateTime | null

@@ -1,11 +1,13 @@
 import type { Big } from "big.js"
 import type { DateTime } from "luxon"
+import { ENTITY_TYPES } from "../legal"
 
 export type Account = {
     id: number
     name: string
-    entityType: string
-    address: string
+    entityType: typeof ENTITY_TYPES[number]
+    addressLine1: string
+    addressLine2: string | null
     suburb: string
     state: string
     postcode: string
