@@ -1,6 +1,6 @@
 import type { Big } from "big.js"
 import type { DateTime } from "luxon"
-import { AttributedDistributionsEntry } from "./ledgers"
+import { TaxLedgerEntry } from "./ledgers"
 
 export type FinancialYear = {
     startDate: DateTime
@@ -13,10 +13,10 @@ export type FinancialQuarter = {
     endDate: DateTime
 }
 
-export type TaxDistribution = {
-	discountCapitalGains: Big
-	nonDiscountCapitalGains: Big
-	income: Big
+export type TaxAttribution = {
+	discountedCapitalGains: Big
+	otherCapitalGains: Big
+	otherIncome: Big
 }
 
 export type CashDistribution = {
@@ -25,12 +25,10 @@ export type CashDistribution = {
     cashPaidOut: Big
 }
 
-export type Distribution = TaxDistribution & CashDistribution
-
 export type AttributionCalculation = {
     date: DateTime
-    taxPool: TaxDistribution
+    taxPool: TaxAttribution
     cashPool: Big,
-    streamedTax: ({ accountId: number } & TaxDistribution)[]
-    attributions: AttributedDistributionsEntry[]
+    streamedTax: ({ accountId: number } & TaxAttribution)[]
+    attributions: TaxLedgerEntry[]
 }
