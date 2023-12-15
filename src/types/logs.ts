@@ -1,8 +1,12 @@
 import type { DateTime } from "luxon"
 
 export type InvestorPortalAccessLogEntry = {
-    date: DateTime
+    sessionStartedAt: DateTime
     clientId: number
+    lastActivityAt: DateTime
+    deviceType: string | null
+    os: string | null
+    browser: string | null
 }
 
 export type ModificationLogEntry = {
