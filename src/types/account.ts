@@ -15,7 +15,7 @@ export type Account = {
     distributionReinvestmentPercentage: Big
     oldId?: string | null
     unitsHeld?: Big | null
-    totalInvested?: Big | null
+    netRemainingCapital?: Big | null
     initialInvestmentDate?: DateTime | null
     tfnProvided?: boolean
 }
