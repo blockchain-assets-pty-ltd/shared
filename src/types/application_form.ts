@@ -84,17 +84,17 @@ export type CommonApplicationFormData = {
 
 export type ApplicationForm = {
     entityType: "Individual"
-    formData: CommonApplicationFormData & { individual: IndividualDetails }
+    formData: (CommonApplicationFormData & { individual: IndividualDetails }) | null
 } | {
     entityType: "Company"
-    formData: CommonApplicationFormData & { company: CompanyDetails }
+    formData: (CommonApplicationFormData & { company: CompanyDetails }) | null
 } | {
     entityType: "Trust"
-    formData: CommonApplicationFormData & { trust: TrustDetails }
+    formData: (CommonApplicationFormData & { trust: TrustDetails }) | null
 } | {
     entityType: "Superannuation Fund"
-    formData: CommonApplicationFormData & { superannuationFund: SuperannuationFundDetails }
+    formData: (CommonApplicationFormData & { superannuationFund: SuperannuationFundDetails }) | null
 } | {
     entityType: "Partnership"
-    formData: CommonApplicationFormData & { partners: IndividualDetails[] }
+    formData: (CommonApplicationFormData & { partners: IndividualDetails[] }) | null
 }
