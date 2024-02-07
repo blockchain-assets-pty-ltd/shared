@@ -82,19 +82,19 @@ export type CommonApplicationFormData = {
     allSignaturesRequired: boolean
 }
 
-export type EntitySpecificApplicationFormData = {
+export type ApplicationForm = {
     entityType: "Individual"
-    individual: IndividualDetails
+    formData: CommonApplicationFormData & { individual: IndividualDetails }
 } | {
     entityType: "Company"
-    company: CompanyDetails
+    formData: CommonApplicationFormData & { company: CompanyDetails }
 } | {
     entityType: "Trust"
-    trust: TrustDetails
+    formData: CommonApplicationFormData & { trust: TrustDetails }
 } | {
     entityType: "Superannuation Fund"
-    superannuationFund: SuperannuationFundDetails
+    formData: CommonApplicationFormData & { superannuationFund: SuperannuationFundDetails }
 } | {
     entityType: "Partnership"
-    partners: IndividualDetails[]
+    formData: CommonApplicationFormData & { partners: IndividualDetails[] }
 }
