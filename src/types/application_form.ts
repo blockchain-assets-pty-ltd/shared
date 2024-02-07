@@ -17,7 +17,7 @@ export type BankDetails = {
 export type InvestmentDetails = {
     amount: Big
     date: DateTime
-    reinvestDistributions: false
+    reinvestDistributions: boolean
 }
 
 export type SignatoryDetails = {
