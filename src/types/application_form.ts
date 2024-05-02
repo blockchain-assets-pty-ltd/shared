@@ -78,7 +78,8 @@ export type CommonApplicationFormData = {
     bank: BankDetails
     investment: InvestmentDetails
     signatories: SignatoryDetails[]
-    idDocuments: File | null
+    idDocuments: File[] | null
+    qualifiedAccountantCertificates: File[] | null
     allSignaturesRequired: boolean
 }
 
