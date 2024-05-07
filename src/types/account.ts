@@ -20,6 +20,13 @@ export type Account = {
     tfnProvided?: boolean
 }
 
+export type AccountPartition = {
+    accountId: number
+    order: number
+    units: Big
+    name: string
+}
+
 export type TaxFileNumber = {
     taxFileNumber: string
     accountId: number
