@@ -26,6 +26,7 @@ export type AccountPartition = {
     units: Big
     averageUnitPrice: Big
     name: string
+    actualUnits?: Big
 }
 
 export type TaxFileNumber = {
