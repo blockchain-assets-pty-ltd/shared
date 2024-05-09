@@ -24,6 +24,7 @@ export type AccountPartition = {
     accountId: number
     order: number
     units: Big
+    averageUnitPrice: Big
     name: string
 }
 
