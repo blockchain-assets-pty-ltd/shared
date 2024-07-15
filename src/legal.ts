@@ -1,7 +1,7 @@
 export const ENTITY_TYPES = [
     "Individual",
+    "Joint Individual",
     "Company",
     "Trust",
-    "Superannuation Fund",
-    "Partnership"
+    "Superannuation Fund"
 ] as const
