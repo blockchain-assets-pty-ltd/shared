@@ -20,7 +20,8 @@ export type TaxAttribution = {
 }
 
 export type CashDistribution = {
-    cashRedeemed: Big
+    cashRedeemedReturnOfCapital: Big
+    cashRedeemedProfit: Big
     cashReinvested: Big
     cashPaidOut: Big
 }
