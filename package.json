@@ -23,13 +23,13 @@
   },
   "homepage": "https://github.com/blockchain-assets-pty-ltd/shared#readme",
   "dependencies": {
-    "@types/big.js": "^6.1.6",
+    "@types/big.js": "^6.2.2",
     "big.js": "^6.2.1",
-    "luxon": "^3.3.0"
+    "luxon": "^3.5.0"
   },
   "devDependencies": {
-    "@types/luxon": "^3.3.1",
-    "@types/jest": "^29.0.3",
-    "ts-jest": "^29.0.1"
+    "@types/luxon": "^3.4.2",
+    "@types/jest": "^29.5.12",
+    "ts-jest": "^29.2.4"
   }
 }
